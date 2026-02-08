@@ -22,6 +22,7 @@ public class BiometricScanner : MonoBehaviour
     private Coroutine currentScanCoroutine;
     private Coroutine blinkCoroutine;
 
+    public CatAI theCat;
     public static bool IsScanCompleted = false;
 
     void Start()
@@ -161,10 +162,18 @@ public class BiometricScanner : MonoBehaviour
         statusText.text = "PURGE COMPLETE.";
 
         IsScanCompleted = true;
+
+        //cat setting
         CatAI[] cats = FindObjectsOfType<CatAI>();
         foreach (var cat in cats)
         {
             cat.isCreepyLooking = true;
+        }
+        if (theCat != null)
+        {
+            theCat.SwitchToFollowMode();
+
+            Destroy(gameObject);
         }
 
         progressBarText.gameObject.SetActive(false);
@@ -172,6 +181,7 @@ public class BiometricScanner : MonoBehaviour
 
         hackerText.rectTransform.localPosition = originalHackerPos;
         hackerText.enabled = true;
+
 
         yield return new WaitForSeconds(3f);
         dialogueManager.GlobalShowMessage("Zero: What was that flashing on the screen just now? It said I was an iteration... what does that even mean?");
