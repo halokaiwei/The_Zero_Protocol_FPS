@@ -88,7 +88,7 @@ public class BiometricScanner : MonoBehaviour
         dialogueManager.GlobalShowMessage("Artemis: A local logic overflow detected. Ignore it.");
 
         yield return new WaitForSeconds(3f);
-        dialogueManager.GlobalShowMessage("Artemis: Your indicators are perfect, Zero. You are the god of special ops.");
+        dialogueManager.GlobalShowMessage("Artemis: Your vitals are looking sharp, Zero. Every indicator is perfect. You're more than ready for Sector C");
 
         yield return new WaitForSeconds(4f);
         statusText.text = "<color=yellow>PRESS [E] TO PURGE GAS</color>";

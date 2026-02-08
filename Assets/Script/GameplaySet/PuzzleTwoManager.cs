@@ -6,7 +6,7 @@ public class PuzzleTwoManager : MonoBehaviour
     public List<PuzzleNode> nodes = new List<PuzzleNode>();
     [Header("Reward Settings")]
     public RotatingHazard spinner;
-
+    public DialogueManager dialogueManager;
     public DoorController areaBDoor1;
     public void OnNodeHit(int index)
     {
@@ -36,6 +36,7 @@ public class PuzzleTwoManager : MonoBehaviour
         if (allRed)
         {
             Debug.Log("Solved Successfully");
+            dialogueManager.GlobalShowMessage("Well done Zero. The frequency had been balanced. The access had been granted. Now we can proceed to sector C.");
             HandleWin();
         }
     }

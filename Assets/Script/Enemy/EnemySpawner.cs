@@ -101,7 +101,6 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.Log("Mission Accomplished: Rotating hazard stopped.");
             dialogueManager.GlobalShowMessage("Artemis: Bio-signals terminated. Hazard offline. The Access Card is now reachable");
-            dialogueManager.GlobalShowMessage("Artemis: Bio-signals terminated. Hazard offline. The Access Card is now reachable");
             spinner.DeactivateHazard();
         }
     }
