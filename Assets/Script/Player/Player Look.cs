@@ -6,8 +6,8 @@ public class PlayerLook : MonoBehaviour
 {
     public float mouseSens = 800f;
     public Transform orientation;
-    public Transform playerBody;  
-
+    public Transform playerBody;
+    public bool isLocked = false; 
     public float xRotation;
     public float yRotation;
 
@@ -19,6 +19,7 @@ public class PlayerLook : MonoBehaviour
 
     void Update()
     {
+        if (isLocked) return;
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * mouseSens;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * mouseSens;
 

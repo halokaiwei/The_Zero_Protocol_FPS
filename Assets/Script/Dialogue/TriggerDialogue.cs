@@ -56,8 +56,12 @@ public class MultiDialogueTrigger : MonoBehaviour
         if (targetBarrel != null && targetBarrel.isExploded && !missionAccomplished)
         {
             missionAccomplished = true;
-            string cleverZeroLine = "Clever as always, Zero. 'Explosive solution' is the easiest way to get access card. .";
+            StopAllCoroutines();
+
+            string cleverZeroLine = "Clever as always, Zero. 'Explosive solution' is the easiest way to get access card.";
             dialogueManager.GlobalShowMessage(cleverZeroLine);
+
+            Debug.Log("[Artemis] Target destroyed. Forcing dialogue override.");
             return true;
         }
         return false;
