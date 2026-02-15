@@ -34,6 +34,12 @@ public class DoorController : MonoBehaviour
         {
             FindObjectOfType<DialogueManager>().GlobalShowMessage(deniedMessage);
         }
+        CattoActivator activator = GetComponent<CattoActivator>();
+        if (activator != null)
+        {
+            activator.delayAfterDialogue = 5f;
+            activator.ActivateCatto();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

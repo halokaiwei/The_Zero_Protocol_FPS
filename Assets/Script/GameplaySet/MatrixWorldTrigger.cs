@@ -5,15 +5,7 @@ public class MatrixWorldTrigger : MonoBehaviour
     public GameObject matrixSphere; 
     public AudioSource glitchSound; 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            RevealTruth();
-        }
-    }
-
-    void RevealTruth()
+    public void RevealTruth()
     {
         if (matrixSphere != null)
         {

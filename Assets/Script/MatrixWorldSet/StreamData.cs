@@ -1,37 +1,44 @@
 using UnityEngine;
-using TMPro; 
+using TMPro;
 using System.Collections;
 
 public class StreamData : MonoBehaviour
 {
     public TextMeshProUGUI screenText;
-    public float typeSpeed = 0.05f;  
-
+    public float typeSpeed = 0.05f;
+    public float activationDelay = 1.0f;
     [TextArea(3, 10)]
-    public string[] dataLogs;        
+    public string[] dataLogs;
 
-    private int currentLine = 0;
+    private bool hasStarted = false;
 
-    void Start()
+    void Start() { if (screenText != null) screenText.text = ""; }
+
+    public void StartDataStream()
     {
-        StartCoroutine(PlayDataStream());
+        if (!hasStarted)
+        {
+            hasStarted = true;
+            StartCoroutine(SequenceActivation());
+        }
     }
 
-    IEnumerator PlayDataStream()
+    IEnumerator SequenceActivation()
     {
-        while (true)
-        {
-            screenText.text = ""; 
-            string fullText = dataLogs[currentLine];
+        yield return new WaitForSeconds(activationDelay);
 
+        int currentLine = 0;
+        while (currentLine < dataLogs.Length)
+        {
+            screenText.text = "";
+            string fullText = dataLogs[currentLine];
             foreach (char c in fullText)
             {
                 screenText.text += c;
                 yield return new WaitForSeconds(typeSpeed);
             }
-
-            yield return new WaitForSeconds(2f);
-            currentLine = (currentLine + 1) % dataLogs.Length;
+            yield return new WaitForSeconds(2.5f); 
+            currentLine++;
         }
     }
 }

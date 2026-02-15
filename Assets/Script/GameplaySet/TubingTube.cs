@@ -59,8 +59,6 @@ public class TubingTube : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
 
-        GetComponent<Renderer>().material.color = Color.green;
-
         Invoke("ArtemisPanicDialogue", 1.0f);
     }
 

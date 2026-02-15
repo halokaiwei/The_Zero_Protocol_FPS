@@ -20,7 +20,6 @@ public class PressureStabilizationUI : MonoBehaviour
 
     [Header("Systems")]
     public TextMeshProUGUI statusText;
-    public DoorController targetDoor;
     public DialogueManager dialogueManager;
 
     private float lastMessageTime = 0f;
@@ -98,11 +97,10 @@ public class PressureStabilizationUI : MonoBehaviour
         {
             isSolved = true;
             statusText.text = "Stabilization Successful!";
-            targetDoor.isAccessGranted = true;
 
             if (parentTube != null) parentTube.OnTaskComplete();
 
-            Invoke("CloseUI", 1.5f);
+            Invoke("CloseUI", 0.5f);
         }
     }
 
@@ -123,6 +121,7 @@ public class PressureStabilizationUI : MonoBehaviour
 
     void CloseUI()
     {
+        dialogueManager.GlobalShowMessage("The pressure had been stabilized. We can now leave the room. Good job, Zero.");
         gameObject.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
