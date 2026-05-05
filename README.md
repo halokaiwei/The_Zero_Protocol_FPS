@@ -1,3 +1,5 @@
+You can play demo on https://kwkvv.itch.io/the-zero-protocol-demo 
+
 🎮 THE ZERO PROTOCOL
 ![Game Cover](./The_Zero_Protocol_Cover.jpg)
 
